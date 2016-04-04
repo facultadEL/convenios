@@ -14,7 +14,7 @@
 <?php
 include_once "conexionBaseDatos.php";
 //$palabra = UPPER('%{$_POST['palabra']}%');
-$resultado = pg_query("SELECT * FROM convenio full outer join especialidad on(especialidad.id_especialidad = convenio.especialidad) full outer join tipo_convenio on(tipo_convenio.id_tipo_convenio = convenio.nombre_convenio) WHERE  especialidad = id_especialidad AND nombre_convenio = id_tipo_convenio  AND
+$resultado = pg_query("SELECT * FROM convenio inner join especialidad on(especialidad.id_especialidad = convenio.especialidad) inner join tipo_convenio on(tipo_convenio.id_tipo_convenio = convenio.nombre_convenio) WHERE  especialidad = id_especialidad AND nombre_convenio = id_tipo_convenio  AND
    UPPER(nombre_tipo)          LIKE UPPER('%{$_POST['palabra']}%') 
 or UPPER(nombre_especialidad)  LIKE UPPER('%{$_POST['palabra']}%')
 or UPPER(empresa)      		   LIKE UPPER('%{$_POST['palabra']}%') 
@@ -23,7 +23,7 @@ or UPPER(representada)         LIKE UPPER('%{$_POST['palabra']}%')
 or UPPER(folio)                LIKE UPPER('%{$_POST['palabra']}%') 
 or UPPER(fechafirma)           LIKE UPPER('%{$_POST['palabra']}%') 
 or UPPER(fechadesde)           LIKE UPPER('%{$_POST['palabra']}%') 
-or UPPER(fechahasta)           LIKE UPPER('%{$_POST['palabra']}%') ");
+or UPPER(fechahasta)           LIKE UPPER('%{$_POST['palabra']}%') ORDER BY id_convenio DESC");
 echo '<table align="center" cellspacing="1" cellpadding="4" border="1" bgcolor=#585858 id="tabla">';
 	echo '<tr bgcolor="#FFFFFF">';
 		echo '<td id="titulo3" colspan="5" align="center"><l1>Listado de Convenios</l1></td>';

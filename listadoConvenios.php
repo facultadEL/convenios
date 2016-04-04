@@ -22,7 +22,7 @@
 <?php
 
 include_once 'conexionBaseDatos.php';
-$val = pg_query('SELECT * FROM convenio full outer join especialidad on(especialidad.id_especialidad = convenio.especialidad) full outer join tipo_convenio on(tipo_convenio.id_tipo_convenio = convenio.nombre_convenio) WHERE estado=TRUE AND especialidad = id_especialidad  AND nombre_convenio = id_tipo_convenio');
+$val = pg_query('SELECT * FROM convenio inner join especialidad on(especialidad.id_especialidad = convenio.especialidad) inner join tipo_convenio on(tipo_convenio.id_tipo_convenio = convenio.nombre_convenio) WHERE estado=TRUE AND especialidad = id_especialidad  AND nombre_convenio = id_tipo_convenio ORDER BY id_convenio DESC');
 echo '<table align="center" cellspacing="1" cellpadding="4" width="100%" border="1" bgcolor=#585858 id="tabla">';
 	echo '<tr bgcolor="#FFFFFF" width="100%">';
 		echo '<td id="titulo3" colspan="5" align="center"><l1>Listado de Convenios</l1></td>';
