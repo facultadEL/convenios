@@ -75,16 +75,16 @@ $ip = $totalPdf - 1;
 
 	
 		if ($destinoPdf != $vacio){
-			if ($pdf == $vacio){
+			//if ($pdf == $vacio){
 				if ($resultadoPdf[$ip] == "pdf") {
 					pg_query("UPDATE convenio SET archivo='$destinoPdf' WHERE id_convenio = $id_convenio; ");
 					$uploadPdf = ftp_put($conn_id, $destino_Pdf, $filePdf, FTP_BINARY);
 				}else{
 					echo '<script type="text/javascript">alert("El archivo subido no es válido. Suba un PDF");</script>';
 				}
-			}else{
-				echo '<script type="text/javascript">alert("El archivo PDF ya existe");</script>';	
-			}
+			//}else{
+				//echo '<script type="text/javascript">alert("El archivo PDF ya existe");</script>';	
+			//}
 			}
 		
 	
@@ -97,16 +97,16 @@ $iw = $totalWord - 1;
 
 	// archivo a copiar/subir
    	if ($destinoWord != $vacio){
-		if ($word == $vacio){
+		//if ($word == $vacio){
 			if ($resultadoWord[$iw] == "doc" || $resultadoWord[$iw] == "docx") {
 				pg_query("UPDATE convenio SET archivo2='$destinoWord' WHERE id_convenio = $id_convenio; ");
 				$uploadWord = ftp_put($conn_id, $destino_Word, $fileWord, FTP_BINARY); 
 			}else{
 				echo '<script type="text/javascript">alert("El archivo subido no es válido. Suba un .doc o .docx");</script>';
 			}
-		}else{
-			echo '<script type="text/javascript">alert("El archivo word ya existe");</script>';	
-		}
+		//}else{
+			//echo '<script type="text/javascript">alert("El archivo word ya existe");</script>';	
+		//}
 	}
 
 
